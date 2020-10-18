@@ -1,10 +1,12 @@
 package service;
 
-import com.google.gson.Gson;
 import exception.ErrorCode;
 import exception.ServerException;
+import model.Animal;
+import model.Rule;
 
 import java.io.File;
+import java.util.List;
 
 public class ServerService {
 
@@ -42,6 +44,22 @@ public class ServerService {
         checkServerNotStart(isStarted);
         if (savedDataFile==null) throw new ServerException(ErrorCode.SERVER_FILE_NOT_EXIST);
         getFileService().exportDataToFile(savedDataFile);
+    }
+
+    public static void setCountForRules() {
+        List<Animal> listAnimal = getAnimalService().getAnimals();
+        List<Rule> listRule = getRuleService().getRules();
+        for (Animal animal:listAnimal) {
+            for (int i = 0; i < listRule.size(); i++) {
+                if (listRule.get(i).getWeight().size() == 0 || listRule.get(i).getWeight().contains(animal.getWeight())) {
+                    if (listRule.get(i).getHeight().size() == 0  || listRule.get(i).getHeight().contains(animal.getHeight())) {
+                        if (listRule.get(i).getType().size() == 0  || listRule.get(i).getType().contains(animal.getType())) {
+                            listRule.get(i).setCount(listRule.get(i).getCount()+1);
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }

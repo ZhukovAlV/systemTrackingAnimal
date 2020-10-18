@@ -60,7 +60,6 @@ public class FileService {
     public void exportDataToFile(File file) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
             JsonArray ja = new JsonArray();
-            ja.add(getGson().toJson(getAnimalDao().getAnimalList()));
             ja.add(getGson().toJson(getRuleDao().getRuleList()));
             bw.write(ja.toString());
         } catch (IOException e) {

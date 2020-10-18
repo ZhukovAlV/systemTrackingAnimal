@@ -22,9 +22,13 @@ public class Server {
     }
 
     // Записывает в файл результаты работы и останавливает сервер
-    public static void stopServer(File savedDataFile) throws IOException,ServerException{
+    public static void stopServer(File exportDataFile) throws IOException,ServerException{
         ServerService.checkServerIsStart(isIsStarted());
         setIsStarted(false);
-        ServerService.stopServer(savedDataFile, isIsStarted());
+        ServerService.stopServer(exportDataFile, isIsStarted());
+    }
+
+    public static void counterRules() {
+        ServerService.setCountForRules();
     }
 }

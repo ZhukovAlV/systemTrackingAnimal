@@ -9,8 +9,14 @@ import java.util.List;
 public class RuleService {
 
     private static RuleDao ruleDao = new RuleDaoImpl();
+    public static RuleDao getRuleDao() {
+        return ruleDao;
+    }
 
     public void setRules(List<Rule> rules) {
-        ruleDao.setRules(rules);
+        getRuleDao().setRules(rules);
+    }
+    public List<Rule> getRules() {
+        return getRuleDao().getRuleList();
     }
 }

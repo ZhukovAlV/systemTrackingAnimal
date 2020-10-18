@@ -7,8 +7,8 @@ import org.junit.Test;
 
 public class TestServer {
 
-    final File FILE_IMPORT = new File("importDataFile.txt");
-    final File FILE_EXPORT = new File("exportDataFile.txt");
+    final File FILE_IMPORT = new File("importDataFile.json");
+    final File FILE_EXPORT = new File("exportDataFile.json");
 
     // Пытаемся запустить сервер и передаем NULL
     @Test
