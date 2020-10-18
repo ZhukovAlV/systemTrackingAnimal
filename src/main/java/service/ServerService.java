@@ -43,6 +43,9 @@ public class ServerService {
     public static void stopServer(File savedDataFile,boolean isStarted) throws ServerException{
         checkServerNotStart(isStarted);
         if (savedDataFile==null) throw new ServerException(ErrorCode.SERVER_FILE_NOT_EXIST);
+        for (int i = 0; i < getRuleService().getRules().size(); i++) {
+            System.out.println(getRuleService().getRules().get(i).getCount());
+        }
         getFileService().exportDataToFile(savedDataFile);
     }
 
